@@ -56,7 +56,7 @@ dotenv.config(); // Load environment variables
 
 const PORT = process.env.PORT || 3000;
 const JITO_ENDPOINT = 'https://bundle-api.mainnet.jito.network'; // Updated to the correct Jito endpoint
-const RPC_URL = "https://mainnet.beta.solana.com" || ; // ENTER YOUR PAID HELIUS RPC HERE ALTERNATIVELY
+const RPC_URL = "https://mainnet.beta.solana.com"  ; // ENTER YOUR PAID HELIUS RPC HERE ALTERNATIVELY
 const PRIVATE_KEY = "ENTER YOUR PRIVATE KEY HERE" ;// ENTER YOUR PRIVATE KEY HERE IN BASE58 FORM
 const WSOL_MINT = new PublicKey('So11111111111111111111111111111111111111112');
 
