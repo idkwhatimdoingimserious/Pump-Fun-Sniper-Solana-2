@@ -55,13 +55,10 @@ dotenv.config(); // Load environment variables
 
 const PORT = process.env.PORT || 3000;
 const JITO_ENDPOINT = 'https://bundle-api.mainnet.jito.network'; // Updated to the correct Jito endpoint
-const RPC_URL = process.env.RPC_URL;
-const PRIVATE_KEY = process.env.PRIVATE_KEY; // Base58 encoded
+const RPC_URL = "https://mainnet.beta.solana.com" || // ENTER YOUR RPC URL HERE
+const PRIVATE_KEY = "ENTER YOUR PRIVATE KEY HERE" // Base58 encoded
 const WSOL_MINT = new PublicKey('So11111111111111111111111111111111111111112');
 
-if (!PRIVATE_KEY) {
-  throw new Error('PRIVATE_KEY is not set in environment variables');
-}
 
 const secretKey = bs58.decode(PRIVATE_KEY);
 const wallet = Keypair.fromSecretKey(secretKey);
